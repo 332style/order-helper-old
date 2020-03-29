@@ -4,12 +4,11 @@
     <el-main>
       <div class="user-form">
         <el-input v-model="email" placeholder="请输入帳號"></el-input>
-        <el-input
-          placeholder="请输入密碼"
-          v-model="password"
-          show-password
-        ></el-input>
-        <el-button type="primary">登入</el-button>
+        <el-input v-model="password" placeholder="请输入密碼" show-password />
+        <el-button type="primary" @click="loginWithEmail">登入</el-button>
+        <el-button type="success" @click="loginWithGoogle">
+          <font-awesome-icon :icon="['fab', 'google']" />
+        </el-button>
       </div>
     </el-main>
   </el-container>
@@ -35,12 +34,51 @@
 }
 </style>
 <script>
+import * as firebase from "firebase";
+
 export default {
   data() {
     return {
       email: "",
       password: ""
     };
+  },
+  methods: {
+    loginWithEmail() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .catch(function(error) {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ...
+        });
+    },
+    loginWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const token = result.credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          // ...
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          const credential = error.credential;
+          // ...
+        });
+    }
   }
 };
 </script>
