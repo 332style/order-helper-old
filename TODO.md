@@ -1,1 +1,1 @@
-# google Login https://firebase.google.com/docs/auth/web/password-auth
+# Login https://firebase.google.com/docs/auth with vuex
