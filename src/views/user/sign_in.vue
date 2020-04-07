@@ -1,10 +1,9 @@
 <template>
   <el-container class="container">
-    <!-- <el-header>Header</el-header> -->
     <el-main>
       <div class="user-form">
-        <el-input v-model="email" placeholder="请输入帳號"></el-input>
-        <el-input v-model="password" placeholder="请输入密碼" show-password />
+        <el-input v-model="email" placeholder="請輸入帳號"></el-input>
+        <el-input v-model="password" placeholder="請輸入密碼" show-password />
         <el-button type="primary" @click="loginWithEmail">登入</el-button>
         <el-button type="success" @click="loginWithGoogle">
           <font-awesome-icon :icon="['fab', 'google']" />
@@ -13,26 +12,6 @@
     </el-main>
   </el-container>
 </template>
-<style lang="scss">
-.container {
-  main {
-    display: flex;
-    justify-content: center;
-    .user-form {
-      max-width: 350px;
-      border: 1px solid rgba(0, 0, 0, 0.6);
-      border-radius: 5px;
-      padding: 20px;
-      .el-input {
-        margin: 10px 0;
-      }
-      .el-button {
-        margin-top: 10px;
-      }
-    }
-  }
-}
-</style>
 <script>
 import * as firebase from "firebase";
 
@@ -83,3 +62,23 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.container {
+  main {
+    display: flex;
+    justify-content: center;
+    .user-form {
+      max-width: 350px;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+      padding: 20px;
+      .el-input {
+        margin: 10px 0;
+      }
+      .el-button {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+</style>
