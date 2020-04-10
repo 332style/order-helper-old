@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import SignInPage from "../views/user/sign_in.vue";
+import Show from "../views/orderlist/show.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ const routes = [
     path: "/user/sign_in",
     name: "signIn",
     component: SignInPage
+  },
+  {
+    path: "/orderslist/show",
+    name: "show",
+    component: Show
   }
 ];
 
